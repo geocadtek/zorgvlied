@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html lang='en'> 
+<head>
+<title>HELPPAGINA - Gemeente Amstelveen </title> 
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+	
+<meta name="author" content="Tekin Uslu">
+<meta name="keywords" content="Helppaina, Gemeente Amstelveen">
+<meta name="description" content="Helpagina">
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.3/themes/base/jquery-ui.css" type="text/css"/>    
+
+<script src="http://maps.google.com/maps/api/js?sensor=false&v=3.2"></script> 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script src="OpenLayers.js"></script>
+
+    <script>
+    $(function() {
+		$( "#tabs" ).tabs();
+    });
+	$(document).ready(function(){
+	$('#tabs-2').attr('title','Uitzoomen');
+	$('table tr td:first-child').css("text-align", "center");
+	});
+</script>
+<style type="text/css">
+	body{font-family:Verdana,Arial,Helvetica,sans-serif; font-size:100%; padding-top:0; background-color:#C4B28F;}
+	#wrapper{width:1000px; margin-left:auto; margin-top:-10px; margin-right:auto; background-color:#ffffff; border-left: solid 14px #91836A; border-right: solid 14px #91836A;}
+	#tabs-1 table{border:2px outset gray;}
+	#tabs-1 table td{border:1px inset #E7E4E4;}
+	#tabs-2 h4{color:#0a1758; margin-top:10px;}
+	#tabs-2, #tabs-1{font-size:95%;}
+	#img_head_info{width:100%; text-align:center; padding-top:10px;}
+	#img_head_info  img{border:none;}
+	#recht_menu_info{font-size:12px;}
+	.uitleg_td{padding-left:5px;}
+	#footer{clear:both; text-align:center; background-color:#E2001A; padding-bottom: 5px; padding-left:10px; padding-top:3px; padding-right:0; font-size:70%; color:#FFFFFF; font-family:Arial,Helvetica,sans-serif;}
+</style>  
+</head>
+  <body>
+    <div id="wrapper">
+		<div id="img_head_info">
+			<img src="img/logoamstel.jpg" title="Basis-informatie" alt="Basis-Informatie">
+		</div> 
+		<div id="recht_menu_info">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Help</a></li>					
+				</ul>
+				<div id="tabs-1">
+					 <h1 style="color:#0a1758; font-size:22px;">Welkom op deze helppagina</h1>
+						<p>Op pagina, waar u vandaan kwam, kunt u zien waar de door u gewenste informatie van de  Gemeente Amstelveen te vinden is.
+						Door een punt aan te klikken krijgt u meer info over de betreffende hoogte bout. 
+						Mocht u onvolkomendheden tegen komen, kunt u deze melden via: <a href="mailto:basisinformatie@amstelveen.nl">basisinformatie@amstelveen.nl</a></p>
+						<p>De kaart werkt op dezelfde manier als bijvoorbeeld 'GoogleMaps' kaarten.</p>
+						<h3>Kaartnavigatie</h3>
+						<p>Links in de kaart staan een aantal pijlen; de kaartnavigatie. Met deze pijlen kunt u in de kaart bewegen. Het is ook mogelijk in de kaart te bewegen met uw muis.</p>
+						<table><tr><td><img src="img/over_zoom_overview.png"/></td>
+						<td class='uitleg_td'>Wilt u terug naar het startscherm / uw uitgangspositie, drukt u dan op de 'home-button'.</td></tr>
+						<tr><td><img src="img/over_zoom_in.png"/></td>
+						<td class='uitleg_td'>Met een klik op de plus zoomt u in.</td></tr>
+						<tr><td>
+						<img src="img/over_zoom_out.png"/>
+						</td><td class='uitleg_td'>Met een klik op de min zoomt u uit.
+						</td>
+						</tr>
+						</table>
+						<h3>Zoeken op straatnaam</h3>
+						Met 'zoek op straatnaam' kunt u in het straatnaamregister uw straat opzoeken. Wanneer u de eerste letters intikt vult het systeem aan. Dit versnelt het zoeken. Heeft u de juiste straat gevonden, dan vult het systeem de bestaande nummers in. Kies vervolgens uw huisnummer.
+				</div>
+			</div>
+		</div>
+	   <!--Menu END-->
+		 <div id="footer">Copyright &#64; 2015 Gemeente Amstelveen (Basis-informatie)</div>
+     </div>
+  </body>
+</html>

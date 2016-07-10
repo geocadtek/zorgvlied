@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html lang='en'> 
+<head> 
+    <meta charset='utf-8' />
+    <title>Projecten Gemeente Amstelveen</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3.2"></script>
+    <script type='text/javascript' src='OpenLayers.js'></script>
+    <link rel="stylesheet" href="theme/default/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/opmaak.css" />
+    <script type='text/javascript'>
+    OpenLayers.ProxyHost = "proxy.asp?url=";
+    //OpenLayers.ProxyHost = 'proxy.cgi?url=';
+    
+       
+        var map;
+        function init() {
+            map = new OpenLayers.Map('map', {
+            maxExtent:new OpenLayers.Bounds(113784.3421875, 472150.6671875, 122666.0171875, 483897.0515625),
+            maxResolution: 13.28431396484384,
+            projection: "EPSG:28992",
+            units: 'm'
+            });
+            var topo = new OpenLayers.Layer.WMS(
+            'Topo-Kaart',
+            "http://geo.amstelveen.nl/geoserver/wms",
+            {layers:'topp:gidw_topokaart',
+            transparent:true},
+            {isBaseLayer:true,
+            opacity:0.3,
+            buffer:0}
+            );
+            var projecten = new OpenLayers.Layer.WMS(
+            'Projecten',
+            "http://geo.amstelveen.nl/geoserver/wms",
+            {layers:'topp:gidw_projecten',
+            transparent:true},
+            {opacity:0.8}
+            );
+            var myPopup;
+            info = new OpenLayers.Control.WMSGetFeatureInfo({
+            url: 'http://geo.amstelveen.nl/geoserver/wms',
+            title: 'Klik foor de informatie',
+            layers:([projecten]),
+            queryVisible:true,
+            eventListeners: {
+                getfeatureinfo: function(event) {
+                if(myPopup){
+                myPopup.destroy();
+                }
+                myPopup = new OpenLayers.Popup.FramedCloud(
+                "chicken", 
+                map.getLonLatFromPixel(event.xy),
+                null,
+                event.text,
+                null,
+                true
+                )
+                map.addPopup(myPopup);
+                }
+           }
+        });
+         map.addLayers([topo,projecten]);
+         
+         
+         //Add navigation control
+         /*
+         var navigation_control = new OpenLayers.Control.Navigation();
+         var control_panel = new OpenLayers.Control.Panel({
+         div:document.getElementById('panel_div'),
+         defaultControl: navigation_control
+         });
+         */
+         //Overview map
+         var overview_map = new OpenLayers.Control.OverviewMap(
+         {size: new OpenLayers.Size(150,150),
+         minRectSize:30,
+         autoPan:true,
+         });
+         //Add panel controls
+         /*
+         control_panel.addControls([
+         navigation_control,
+         new OpenLayers.Control.ZoomBox(),
+         new OpenLayers.Control.ZoomToMaxExtent()
+         ])
+         */
+         //Add controls
+         map.addControls([info,overview_map,
+         new OpenLayers.Control.KeyboardDefaults(),
+         new OpenLayers.Control.LayerSwitcher({})
+         ]);
+         //infowindow
+         info.activate(); 
+         if (!map.getCenter()) {
+         map.zoomToMaxExtent();      
+     }
+  }
+       
+    </script>
+</head>
+<body onload='init()'>
+  <div id="wrap">
+    <div id='map' style='width:720px; height:825px;  border-right:1px solid #e6e6e6;'></div>
+    <div id="gem" style="float:right;"><img src="gem.gif" title="Geo-Informatie" alt="Geo-Informatie">
+    <span class="pro">Projecten</span>
+    <!-- Navigation menu
+    <div id="nav">
+    <a href=""><div id='panel_div'></div></a>
+    <div id="paneltekst">
+    <div id="pan">Kaart verschuiven</div>
+    <div id="zoom">Inzoomen</div>
+    <div id="extent">Volledig uitzoomen</div>
+    </div>
+   </div>
+   -->
+   </div>
+    
+    <div id="footer">Copyright &#64; 2011 Gemeente Amstelveen</div>
+    </div>
+</body>
+</html>
